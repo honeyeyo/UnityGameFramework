@@ -1410,7 +1410,8 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         private BuildAssetBundleOptions GetBuildAssetBundleOptions()
         {
-            BuildAssetBundleOptions buildOptions = BuildAssetBundleOptions.DeterministicAssetBundle;
+            // 注意：从 Unity 5.0 开始，DeterministicAssetBundle 选项已被弃用，现在是默认行为
+            BuildAssetBundleOptions buildOptions = BuildAssetBundleOptions.None;
 
             if (ForceRebuildAssetBundleSelected)
             {

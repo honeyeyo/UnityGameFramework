@@ -6,7 +6,8 @@
 //------------------------------------------------------------
 
 using GameFramework;
-using ICSharpCode.SharpZipLib.GZip;
+// using ICSharpCode.SharpZipLib.GZip;
+using Unity.SharpZipLib.GZip;
 using System;
 using System.IO;
 

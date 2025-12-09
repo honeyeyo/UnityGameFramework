@@ -34,7 +34,7 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         internal static readonly float DefaultWindowScale = 1f;
 
-        private static readonly TextEditor s_TextEditor = new TextEditor();
+        private static TextEditor s_TextEditor;
         private IDebuggerManager m_DebuggerManager = null;
         private Rect m_DragRect = new Rect(0f, 0f, float.MaxValue, 25f);
         private Rect m_IconRect = DefaultIconRect;
@@ -170,6 +170,12 @@ namespace UnityGameFramework.Runtime
         protected override void Awake()
         {
             base.Awake();
+
+            // 延迟 TextEditor 初始化到 Awake 中，避免在静态字段初始化中调用 Resources.Load
+            if (s_TextEditor == null)
+            {
+                s_TextEditor = new TextEditor();
+            }
 
             m_DebuggerManager = GameFrameworkEntry.GetModule<IDebuggerManager>();
             if (m_DebuggerManager == null)
