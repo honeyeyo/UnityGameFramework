@@ -21,6 +21,15 @@ namespace UnityGameFramework.Runtime
         private static readonly GameFrameworkLinkedList<GameFrameworkComponent> s_GameFrameworkComponents = new GameFrameworkLinkedList<GameFrameworkComponent>();
 
         /// <summary>
+        /// 支持 Enter Play Mode Options (跳过 Domain Reload) 时清空静态注册表。
+        /// </summary>
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetStatics()
+        {
+            s_GameFrameworkComponents.Clear();
+        }
+
+        /// <summary>
         /// 游戏框架所在的场景编号。
         /// </summary>
         internal const int GameFrameworkSceneId = 0;
